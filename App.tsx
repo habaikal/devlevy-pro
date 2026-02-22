@@ -16,7 +16,8 @@ import {
     Settings,
     FolderOpen,
     Printer,
-    FilePlus2
+    FilePlus2,
+    BookOpen
 } from 'lucide-react';
 import {
     BarChart,
@@ -43,6 +44,7 @@ import { InputGroup } from './components/InputGroup';
 import { AnalysisModal } from './components/AnalysisModal';
 import { SettingsModal } from './components/SettingsModal';
 import { ProjectsModal } from './components/ProjectsModal';
+import { UserManualModal } from './components/UserManualModal';
 import { AppStateSchema } from './types';
 
 const TABS = [
@@ -65,6 +67,7 @@ export default function App() {
     // Modals
     const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
     const [isProjectsModalOpen, setProjectsModalOpen] = useState(false);
+    const [isUserManualModalOpen, setUserManualModalOpen] = useState(false);
 
     useEffect(() => {
         const res = calculateLevy(state);
@@ -248,6 +251,14 @@ export default function App() {
                             <Printer size={20} />
                         </button>
                         <button
+                            onClick={() => setUserManualModalOpen(true)}
+                            className="flex items-center gap-1.5 px-3 py-1.5 text-brand-600 bg-brand-50 hover:bg-brand-100 rounded-lg transition font-medium text-sm border border-brand-200"
+                            title="이용 가이드"
+                        >
+                            <BookOpen size={16} />
+                            <span className="hidden sm:inline">이용 가이드</span>
+                        </button>
+                        <button
                             onClick={() => setSettingsModalOpen(true)}
                             className="p-2 text-slate-500 hover:text-brand-600 hover:bg-slate-100 rounded-full transition"
                             title="환경 설정"
@@ -281,8 +292,8 @@ export default function App() {
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`w-full flex items-center gap-3 px-4 py-4 text-left text-sm font-medium transition-all duration-200 border-l-4 ${activeTab === tab.id
-                                            ? 'border-brand-600 bg-brand-50 text-brand-700'
-                                            : 'border-transparent text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                                        ? 'border-brand-600 bg-brand-50 text-brand-700'
+                                        : 'border-transparent text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                                         }`}
                                 >
                                     <Icon size={18} />
@@ -653,6 +664,10 @@ export default function App() {
                 onClose={() => setProjectsModalOpen(false)}
                 currentState={state}
                 onLoadProject={(loadedState) => setState(loadedState)}
+            />
+            <UserManualModal
+                isOpen={isUserManualModalOpen}
+                onClose={() => setUserManualModalOpen(false)}
             />
         </div>
     );

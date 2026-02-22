@@ -23,7 +23,7 @@ export const AnalysisModal: React.FC<Props> = ({ isOpen, onClose, loading, resul
             <X size={20} />
           </button>
         </div>
-        
+
         <div className="p-6">
           {loading ? (
             <div className="flex flex-col items-center justify-center py-8 space-y-4">
@@ -32,17 +32,17 @@ export const AnalysisModal: React.FC<Props> = ({ isOpen, onClose, loading, resul
             </div>
           ) : (
             <div className="prose prose-sm prose-slate max-w-none">
-                <div className="flex items-start gap-3 mb-4 p-3 bg-indigo-50 text-indigo-800 rounded-lg border border-indigo-100">
-                    <Sparkles size={20} className="mt-0.5 shrink-0" />
-                    <p className="text-sm">입력된 32개 변수와 도시계획 모델을 기반으로 분석한 결과입니다:</p>
-                </div>
+              <div className="flex items-start gap-3 mb-4 p-3 bg-indigo-50 text-indigo-800 rounded-lg border border-indigo-100">
+                <Sparkles size={20} className="mt-0.5 shrink-0" />
+                <p className="text-sm">입력된 32개 변수와 도시계획 모델을 기반으로 분석한 결과입니다:</p>
+              </div>
               <p className="whitespace-pre-wrap leading-relaxed">{result}</p>
             </div>
           )}
         </div>
-        
+
         <div className="p-4 bg-slate-50 border-t border-slate-100 text-center">
-            <p className="text-xs text-slate-400">AI 분석 결과는 참고용이며, 정확한 산정은 감정평가사와 상담하세요.</p>
+          <p className="text-xs text-slate-400">AI 분석 결과는 참고용이며, 정확한 산정은 감정평가사와 상담하세요.</p>
         </div>
       </div>
     </div>
